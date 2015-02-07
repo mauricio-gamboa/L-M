@@ -28,3 +28,15 @@ myApp.directive('owlBrands', [function () {
     }
   };
 }]);
+
+myApp.directive('owlServices', [function () {
+  return {
+    restrict: 'A',
+
+    link: function (scope, element) {
+      element.owlCarousel({
+        autoPlay: true
+      });
+    }
+  };
+}]);

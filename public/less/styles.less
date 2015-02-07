@@ -16,6 +16,7 @@ Variables
 @blue-11: #0088bb;
 @blue-12: #62ccf3;
 @blue-13: #59bade;
+@blue-14: #017ab3;
 
 @orange-1: #f89839;
 
@@ -26,12 +27,18 @@ Variables
 @brown-1: #673300;
 
 @gray-1: #464646;
+@gray-2: #edf4f6;
 
 @green-1: #b8da0f;
 @green-2: #c8e04e;
 @green-3: #98b606;
 @green-4: #afd00d;
 @green-5: #e9f4f7;
+
+@large: ~"(min-width: 1200px)";
+@medium: ~"(min-width: 993px) and (max-width: 1200px)";
+@small: ~"(min-width: 768px) and (max-width: 992px)";
+@xs: ~"(max-width: 767px)";
 
 /***************************
 ****************************
@@ -199,6 +206,43 @@ input[type="email"] {
   }
 }
 
+.show-xs,
+.show-s,
+.show-m,
+.show-xl {
+  display: none;
+}
+
+@media @medium {
+  .hide-m {
+    display: none !important;
+  }
+
+  .show-m {
+    display: block;
+  }
+}
+
+@media @small {
+  .hide-s {
+    display: none !important;
+  }
+
+  .show-s {
+    display: block;
+  }
+}
+
+@media @xs {
+  .hide-xs {
+    display: none !important;
+  }
+
+  .show-xs {
+    display: block;
+  }
+}
+
 /***************************
 ****************************
 Contact Styles
@@ -209,9 +253,10 @@ Contact Styles
   height: 46px;
 
   .logo {
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    z-index: 100;
 
     a {
       box-shadow: 0 -50px 37px -3px black;
@@ -270,6 +315,14 @@ Contact Styles
       height: 62px;
     }
   }
+
+  &.logo-xs {
+    a {
+      background: url("../images/logo-xs.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+      width: 139px;
+      height: 73px;
+    }
+  }
 }
 
 /***************************
@@ -298,6 +351,10 @@ Navigation Styles
         color: black;
         padding: 0 38px;
 
+        @media @medium {
+          padding: 0 30px;
+        }
+
         &:hover {
           color: @orange-1;
         }
@@ -307,6 +364,115 @@ Navigation Styles
         a {
           background-color: @orange-1;
           color: white;
+        }
+      }
+    }
+  }
+}
+
+@mobile-nav-height: 57px;
+@mobile-nav-height-xs: 81px;
+
+#nav-mobile {
+  height: @mobile-nav-height;
+  background-color: white;
+
+  @media @xs {
+    height: @mobile-nav-height-xs;
+  }
+
+  .logo {
+    a {
+      box-shadow: 0 -50px 37px -3px black;
+    }
+  }
+
+  .menu-trigger {
+    width: 54px;
+    border-radius: 25px;
+    color: @orange-1;
+    background-color: @gray-2;
+    height: 40px;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+
+    @media @xs {
+      margin-top: 20px;
+    }
+
+    &.collapsed {
+      color: white;
+      background-color: @orange-1;
+    }
+  }
+
+  > .container {
+    height: @mobile-nav-height;
+
+    @media @xs {
+      height: @mobile-nav-height-xs;
+    }
+
+    > .row {
+      height: @mobile-nav-height;
+
+      @media @xs {
+        height: @mobile-nav-height-xs;
+      }
+
+      > div {
+        height: @mobile-nav-height;
+
+        @media @xs {
+          height: @mobile-nav-height-xs;
+        }
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 200;
+    left: 0;
+    top: @mobile-nav-height;
+
+    @media @xs {
+      top: @mobile-nav-height-xs;
+    }
+
+    li {
+      border-bottom: 1px solid @gray-2;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      a {
+        background-color: white;
+        display: block;
+        font-family: 'proxima_nova_semibold';
+        height: 57px;
+        line-height: 57px;
+        display: block;
+        text-transform: uppercase;
+        color: black;
+        padding: 0 60px;
+
+        &:hover {
+          background-color: @gray-2;
+        }
+      }
+
+      &.active {
+        a {
+          color: white;
+          background-color: @orange-1;
         }
       }
     }
@@ -326,12 +492,24 @@ Header Styles
   position: relative;
   overflow: hidden;
 
+  @media @xs {
+    height: auto;
+  }
+
   > .container {
     > div {
       height: @header-height;
 
+      @media @xs {
+        height: auto;
+      }
+
       > div {
         height: @header-height;
+
+        @media @xs {
+          height: auto;
+        }
       }
     }
   }
@@ -340,6 +518,11 @@ Header Styles
     position: absolute;
     bottom: 0;
     right: 0;
+
+    @media @xs {
+      position: static;
+      margin: 0 auto;
+    }
   }
 
   .header-text {
@@ -347,18 +530,48 @@ Header Styles
     padding-top: 36px;
     color: white;
     font-family: 'proxima_nova_regular';
+
+    @media @small {
+      width: 400px;
+    }
+
+    @media @xs {
+      width: 100%;
+    }
     
     h2 {
       font-family: 'proxima_nova_semibold';
       font-size: 51px;
       text-transform: uppercase;
       margin-bottom: 10px;
+
+      @media @small {
+        font-size: 47px;
+      }
+
+      @media @xs {
+        font-size: 31px;
+        text-align: center;
+      }
     }
 
     p {
       font-size: 17px;
       line-height: 28px;
+
+      @media @small {
+        font-size: 16px;
+      }
     }
+  }
+
+  .phone-xs {
+    text-align: center;
+    font-family: 'proxima_nova_semibold';
+    font-size: 32px;
+    border-top: 2px solid @orange-1;
+    border-bottom: 2px solid @orange-1;
+    padding: 10px 0;
   }
 
   .phone {
@@ -366,6 +579,14 @@ Header Styles
     left: 50%;
     margin-left: -2160px;
     position: absolute;
+
+    @media @medium {
+      margin-left: -2060px;
+    }
+
+    @media @small {
+      margin-left: -2090px;
+    }
   }
 }
 
@@ -383,11 +604,20 @@ Header Services Styles
   left: 0;
   bottom: 0;
 
-  ul {
+  @media @xs {
+    background-color: @blue-14;
+    box-shadow: 0 0 15px 0 black;
+    height: auto;
+    margin-top: 25px;
+    padding: 10px 0;
+    position: static;
+  }
+
+  .service-wrapper {
     margin: 0;
     overflow: hidden;
 
-    li {
+    .service {
       color: #fff;
       float: left;
       font-family: 'proxima_nova_semibold';
@@ -399,6 +629,22 @@ Header Services Styles
       position: relative;
       width: 33.33%;
 
+      @media @medium {
+        padding-right: 10px;
+      }
+
+      @media @small {
+        padding-right: 10px;
+      }
+
+      @media @xs {
+        padding: 0 0 0 90px;
+        width: 100%;
+        float: none;
+        height: auto;
+        min-height: 79px;
+      }
+
       .services-icon {
         position: absolute;
         left: 0;
@@ -409,6 +655,11 @@ Header Services Styles
         margin-bottom: 5px;
         font-size: 15px;
         text-transform: uppercase;
+
+        @media @xs {
+          margin-top: 0;
+          padding-top: 10px;
+        }
       }
     }
   }
@@ -426,9 +677,17 @@ Content Styles
 
 #content {
   padding-bottom: 35px;
+
+  @media @small {
+    padding: 25px 0;
+  }
   
   .content {
     padding-bottom: 0;
+
+    @media @small {
+      padding: 0;
+    }
   }
 }
 
@@ -479,16 +738,31 @@ Content Styles
     padding-top: 0;
     position: relative;
 
+    @media @xs {
+      overflow: hidden;
+    }
+
     .bg-form {
-      left: 50%;
-      margin-left: -185px;
       position: absolute;
       top: 0;
+      width: 100%;
+      margin-left: 0;
+      left: 0;
+
+      @media @xs {
+        width: auto;
+        left: 50%;
+        margin-left: -185px;
+      }
     }
 
     > div {
       background-color: @blue-6;
       padding: 50px 15px 23px;
+
+      @media @small {
+        padding-top: 30px;
+      }
     }
 
     .contact-person {
@@ -496,6 +770,10 @@ Content Styles
       color: @gray-1;
       font-size: 15px;
       line-height: 22px;
+
+      @media @small, @xs {
+        font-size: 13px;
+      }
     }
 
     .form {
@@ -526,6 +804,11 @@ Content Styles
             font-weight: normal;
             width: 50%;
             float: left;
+
+            @media @small, @xs {
+              width: 100%;
+              float: none;
+            }
           }
         }
       }
@@ -554,6 +837,10 @@ Services Styles
   ul {
     margin: 0;
 
+    @media @xs {
+      margin-bottom: 20px;
+    }
+
     li {
       background: url("../images/ico-4.png") no-repeat scroll 0 0 transparent;
       padding-left: 31px;
@@ -568,6 +855,8 @@ Services Styles
 }
 
 .testimonials-slider {
+  z-index: 100;
+  
   .testimonial {
     blockquote {
       background: url("../images/bg-quotes-top.png") no-repeat scroll 50% 0, 
@@ -633,6 +922,10 @@ Why Choose Us Styles
   margin: 0;
   overflow: hidden;
 
+  @media @xs {
+    margin-bottom: 20px;
+  }
+
   li {
     float: left;
     width: 50%;
@@ -640,6 +933,11 @@ Why Choose Us Styles
     padding-left: 48px;
     position: relative;
     margin-bottom: 10px;
+
+    @media @small, @xs {
+      float: none;
+      width: 100%;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -733,27 +1031,68 @@ Quote Styles
   padding: 30px 0;
   color: white;
 
+  @media @small {
+    padding: 20px 0;
+  }
+
   .quote-text {
     width: 685px;
     float: left;
     margin-right: 145px;
 
+    @media @medium {
+      margin-right: 0;
+    }
+
+    @media @small {
+      margin-right: 0;
+      width: 362px;
+    }
+
+    @media @xs {
+      width: 100%;
+      margin-right: 0;
+      text-align: center;
+      float: none;
+    }
+
     h2 {
       font-family: 'proxima_nova_bold';
       text-transform: uppercase;
       font-size: 23px;
+
+      @media @xs {
+        font-size: 18px;
+      }
     }
 
     p {
       color: @blue-9;
       font-size: 16px;
       margin: 0;
+
+      @media @xs {
+        font-size: 13px;
+      }
     }
   }
 
   .btn-1 {
     float: left;
     width: 217px;
+
+    @media @medium, @small {
+      float: right;
+    }
+
+    @media @small {
+      margin-top: 10px;
+    }
+
+    @media @xs {
+      float: none;
+      margin: 10px auto 0 auto;
+    }
   }
 }
 
@@ -780,14 +1119,50 @@ Footer Styles
     .logo {
       float: left;
       margin-right: 30px;
+
+      @media @small {
+        margin-right: 24px;
+      }
+
+      @media @xs {
+        float: none;
+        margin-right: 0;
+        text-align: center;
+
+        a {
+          display: inline-block;
+        }
+      }
     }
 
     .subscribe {
       float: left;
 
+      @media @xs {
+        float: none;
+        border-top: 1px solid @blue-11;
+        border-bottom: 1px solid @blue-11;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        margin-top: 18px;
+
+        h6 {
+          text-align: center;
+        }
+      }
+
       fieldset {
         > * {
           float: left;
+
+          @media @xs {
+            float: none;
+            display: inline-block;
+          }
+        }
+
+        @media @xs {
+          text-align: center;
         }
 
         input[type="text"],
@@ -795,6 +1170,15 @@ Footer Styles
           width: 254px;
           height: 40px;
           margin-right: 10px;
+
+          @media @small {
+            width: 255px;
+          }
+
+          @media @xs {
+            width: 196px;
+            margin-right: 6px;
+          }
         }
 
         .btn-1 {
@@ -802,6 +1186,30 @@ Footer Styles
           height: 35px;
           line-height: 35px;
           width: 114px;
+
+          @media @xs {
+            width: 84px;
+            font-size: 13px;
+            position: relative;
+            top: -4px;
+          }
+        }
+      }
+    }
+
+    .social-wrapper {
+      @media @xs {
+        text-align: center;
+        padding-top: 15px;
+
+        > * {
+          display: inline-block;
+        }
+
+        h6 {
+          margin: 0;
+          line-height: 36px;
+          margin-right: 10px;
         }
       }
     }
@@ -813,10 +1221,20 @@ Footer Styles
     .footer-bottom-text {
       border-top: 1px solid @blue-11;
       padding: 15px 0;
+      font-size: 12px;
+
+      @media @xs {
+        text-align: center;
+        line-height: 20px;
+      }
 
       p {
         float: right;
         margin: 0;
+
+        @media @xs {
+          float: none;
+        }
 
         a {
           color: @white-2;
