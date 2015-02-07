@@ -35,6 +35,8 @@ Variables
 @green-4: #afd00d;
 @green-5: #e9f4f7;
 
+@red-1: red;
+
 @large: ~"(min-width: 1200px)";
 @medium: ~"(min-width: 993px) and (max-width: 1200px)";
 @small: ~"(min-width: 768px) and (max-width: 992px)";
@@ -1283,6 +1285,23 @@ Footer Styles
   &.social-fb {
     span {
       background-image: url("../images/ico-5.png");
+    }
+  }
+}
+
+/***************************
+****************************
+Form Styles
+****************************
+***************************/
+
+.form {
+  &.ng-submitted {
+    input {
+      &.ng-invalid {
+        border-color: @red-1;
+        box-shadow: 0 0 5px -1px @red-1;
+      }
     }
   }
 }

@@ -74,31 +74,31 @@
                 <h4>Need a free Estimate?</h4>
                 <h5>let’s get in touch</h5>
               </div>
-              <div class="form-content">
+              <div class="form-content" ng-controller="ContactCtrl">
                 <img class="bg-form" src="public/images/bg-form.png" alt="">
                 <div>
                   <div class="contact-person">
                     Contact us using the form below or call <br>Kevin at <strong>306-536-4159</strong> for a free quote
                   </div>
-                  <form class="form" action="">
+                  <form name="contactForm" ng-submit="submit(contactForm.$valid)" class="form" role="form" novalidate>
                     <fieldset>
-                      <label for="">Your Name</label>
-                      <input type="text">
+                      <label for="name">Your Name</label>
+                      <input id="name" name="name" ng-model="formData.name" type="text" required>
                     </fieldset>
                     <fieldset>
-                      <label for="">E-mail Address</label>
-                      <input type="text">
+                      <label for="email">E-mail Address</label>
+                      <input id="email" name="email" ng-model="formData.email" type="email" required>
                     </fieldset>
                     <fieldset>
-                      <label for="">Your Phone Number</label>
-                      <input type="text">
+                      <label for="phone">Your Phone Number</label>
+                      <input id="phone" name="phone" ng-model="formData.phone" type="text">
                     </fieldset>
                     <fieldset class="checks">
                       <span>Products you are interested in</span>
-                      <label for=""><input type="checkbox"> Sollicitudin</label>
-                      <label for=""><input type="checkbox"> Malesuada</label>
-                      <label for=""><input type="checkbox"> Bibendum</label>
-                      <label for=""><input type="checkbox"> Praesent</label>
+                      <label for="productA"><input id="productA" name="productA" ng-model="formData.productA" type="checkbox"> Sollicitudin</label>
+                      <label for="productB"><input id="productB" name="productB" ng-model="formData.productB" type="checkbox"> Malesuada</label>
+                      <label for="productC"><input id="productC" name="productC" ng-model="formData.productC" type="checkbox"> Bibendum</label>
+                      <label for="productD"><input id="productD" name="productD" ng-model="formData.productD" type="checkbox"> Praesent</label>
                     </fieldset>
                     <fieldset>
                       <button class="my-btn btn-1" type="submit">Get a free quote</button>
@@ -185,31 +185,31 @@
               <h4>Need a free Estimate?</h4>
               <h5>let’s get in touch</h5>
             </div>
-            <div class="form-content">
+            <div class="form-content" ng-controller="ContactCtrl">
               <img class="bg-form" src="public/images/bg-form.png" alt="">
               <div>
                 <div class="contact-person">
                   Contact us using the form below or call <br>Kevin at <strong>306-536-4159</strong> for a free quote
                 </div>
-                <form class="form" action="">
+                <form name="contactForm" ng-submit="submit(contactForm.$valid)" class="form" role="form" novalidate>
                   <fieldset>
-                    <label for="">Your Name</label>
-                    <input type="text">
+                    <label for="name">Your Name</label>
+                    <input id="name" name="name" ng-model="formData.name" type="text" required>
                   </fieldset>
                   <fieldset>
-                    <label for="">E-mail Address</label>
-                    <input type="text">
+                    <label for="email">E-mail Address</label>
+                    <input id="email" name="email" ng-model="formData.email" type="email" required>
                   </fieldset>
                   <fieldset>
-                    <label for="">Your Phone Number</label>
-                    <input type="text">
+                    <label for="phone">Your Phone Number</label>
+                    <input id="phone" name="phone" ng-model="formData.phone" type="text">
                   </fieldset>
                   <fieldset class="checks">
                     <span>Products you are interested in</span>
-                    <label for=""><input type="checkbox"> Sollicitudin</label>
-                    <label for=""><input type="checkbox"> Malesuada</label>
-                    <label for=""><input type="checkbox"> Bibendum</label>
-                    <label for=""><input type="checkbox"> Praesent</label>
+                    <label for="productA"><input id="productA" name="productA" ng-model="formData.productA" type="checkbox"> Sollicitudin</label>
+                    <label for="productB"><input id="productB" name="productB" ng-model="formData.productB" type="checkbox"> Malesuada</label>
+                    <label for="productC"><input id="productC" name="productC" ng-model="formData.productC" type="checkbox"> Bibendum</label>
+                    <label for="productD"><input id="productD" name="productD" ng-model="formData.productD" type="checkbox"> Praesent</label>
                   </fieldset>
                   <fieldset>
                     <button class="my-btn btn-1" type="submit">Get a free quote</button>
@@ -325,13 +325,15 @@
         <div class="row">
           <div class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
             <h1 class="logo white"><a href="">L&amp;M</a></h1>
-            <form action="" class="subscribe">
-              <h6>Get the Latest news updates</h6>
-              <fieldset class="clearfix">
-                <input type="email" placeholder="Enter you email address">
-                <button type="submit" class="my-btn btn-1">Subscribe</button>
-              </fieldset>
-            </form>
+            <div ng-controller="SubscribeCtrl">
+              <form name="subscribeForm" ng-submit="submit(subscribeForm.$valid)" class="form subscribe" role="form" novalidate>
+                <h6>Get the Latest news updates</h6>
+                <fieldset class="clearfix">
+                  <input id="email" name="email" ng-model="formData.email" type="email" placeholder="Enter you email address" required>
+                  <button type="submit" class="my-btn btn-1">Subscribe</button>
+                </fieldset>
+              </form>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-3 col-md-offset-1 col-md-3 col-lg-offset-4 col-lg-2">
             <div class="social-wrapper">
