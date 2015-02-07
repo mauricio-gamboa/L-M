@@ -40,3 +40,19 @@ myApp.directive('owlServices', [function () {
     }
   };
 }]);
+
+myApp.controller('SubscribeCtrl', ['$scope', '$log', function($scope, $log) {
+  $scope.formData = {};
+
+  $scope.submit = function (isValid) {
+    if (isValid) $log.log($scope.formData);
+  };
+}]);
+
+myApp.controller('ContactCtrl', ['$scope', '$log', function($scope, $log) {
+  $scope.formData = {};
+
+  $scope.submit = function (isValid) {
+    if (isValid) $log.log($scope.formData);
+  };
+}]);
