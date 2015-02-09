@@ -67,7 +67,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="header-text">
             <h2>Quality Plumbing fast &amp; reliable</h2>
-            <div class="phone-xs show-xs">CALL 306-737-4469</div>
+            <div class="phone-xs show-xs">CALL 604-879-5301</div>
             <img class="guy show-xs" src="public/images/guy-xs.png" alt="">
             <div id="quote-form-xs" class="quote-form show-xs">
               <div class="form-header">
@@ -78,7 +78,7 @@
                 <img class="bg-form" src="public/images/bg-form.png" alt="">
                 <div>
                   <div class="contact-person">
-                    Contact us using the form below or call <br>Kevin at <strong>306-536-4159</strong> for a free quote
+                    Contact us using the form below or call <br>Kevin at <strong>604-879-5301</strong> for a free quote
                   </div>
                   <form name="contactForm" ng-submit="submit(contactForm.$valid)" class="form" role="form" novalidate>
                     <fieldset>
@@ -91,7 +91,14 @@
                     </fieldset>
                     <fieldset>
                       <label for="phone">Your Phone Number</label>
-                      <input id="phone" name="phone" ng-model="formData.phone" type="text">
+                      <input id="phone" name="phone" ng-model="formData.phone" type="text" required>
+                    </fieldset>
+                    <fieldset class="checks">
+                      <span>House Plans <span>(Optional)</span></span>
+                      <div class="file-wrapper" select-file>
+                        <input id="file" name="file" ng-model="formData.file" type="file">
+                        <a href="" class="my-btn btn-2"><i class="fa fa-arrow-up"></i> Upload file</a>
+                      </div>
                     </fieldset>
                     <fieldset class="checks">
                       <span>Products you are interested in</span>
@@ -108,6 +115,7 @@
               </div>
             </div>
             <p class="hide-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae odio blandit, aliquam felis et, tincidunt tortor. Donec a quam ac nibh tincidunt mattis. Aliquam sed bibendum velit.</p>
+            <span class="phone-literal hide-xs">call <br class="show-s" /> 604-879-5301</span>
           </div>
           <img class="guy hide-xs" src="public/images/guy.png" alt="">
         </div>
@@ -189,7 +197,7 @@
               <img class="bg-form" src="public/images/bg-form.png" alt="">
               <div>
                 <div class="contact-person">
-                  Contact us using the form below or call <br>Kevin at <strong>306-536-4159</strong> for a free quote
+                  Contact us using the form below or call <br>Kevin at <strong>604-879-5301</strong> for a free quote
                 </div>
                 <form name="contactForm" ng-submit="submit(contactForm.$valid)" class="form" role="form" novalidate>
                   <fieldset>
@@ -202,7 +210,14 @@
                   </fieldset>
                   <fieldset>
                     <label for="phone">Your Phone Number</label>
-                    <input id="phone" name="phone" ng-model="formData.phone" type="text">
+                    <input id="phone" name="phone" ng-model="formData.phone" type="text" required>
+                  </fieldset>
+                  <fieldset class="checks">
+                    <span>House Plans <span>(Optional)</span></span>
+                    <div class="file-wrapper" select-file>
+                      <input id="file" name="file" ng-model="formData.file" type="file">
+                      <a href="" class="my-btn btn-2"><i class="fa fa-arrow-up"></i> Upload file</a>
+                    </div>
                   </fieldset>
                   <fieldset class="checks">
                     <span>Products you are interested in</span>

@@ -28,6 +28,7 @@ Variables
 
 @gray-1: #464646;
 @gray-2: #edf4f6;
+@gray-3: #c7d0d4;
 
 @green-1: #b8da0f;
 @green-2: #c8e04e;
@@ -206,6 +207,30 @@ input[type="email"] {
     &:hover {
       background-color: @green-4;
     }
+  }
+
+  &.btn-2 {
+    background: url("../images/bg-btn-2.png") repeat-x 0 0;
+    border: 1px solid @gray-3;
+    box-shadow: 1px 1px 5px -4px black;
+    color: black;
+    font-size: 13px;
+    font-weight: 700;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    text-transform: capitalize;
+
+    &:hover {
+      background: url("../images/bg-btn-2-hover.png") repeat-x 0 0;
+    }
+  }
+}
+
+.file-wrapper {
+  input[type="file"] {
+    position: absolute;
+    left: -2000px;
   }
 }
 
@@ -592,6 +617,26 @@ Header Styles
       margin-left: -2090px;
     }
   }
+
+  .phone-literal {
+    bottom: 180px;
+    color: white;
+    font-family: 'proxima_nova_semibold';
+    font-size: 40px;
+    left: 15px;
+    line-height: 75px;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 10;
+    display: block;
+
+    @media @small {
+      font-size: 35px;
+      height: 75px;
+      line-height: 33px;
+      padding-top: 5px;
+    }
+  }
 }
 
 /***************************
@@ -799,7 +844,11 @@ Content Styles
         &.checks {
           span {
             display: block;
-            margin-bottom: 10px;
+
+            span {
+              display: inline-block;
+              font-weight: normal;
+            }
           }
 
           label {

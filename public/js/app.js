@@ -41,6 +41,22 @@ myApp.directive('owlServices', [function () {
   };
 }]);
 
+myApp.directive('selectFile', [function () {
+  return {
+    restrict: 'A',
+
+    link: function (scope, element) {
+      var trigger = element.find('.my-btn');
+      var file = element.find('input[type="file"]');
+
+      trigger.on('click', function(e) {
+        e.preventDefault();
+        file.trigger('click');
+      });
+    }
+  };
+}]);
+
 myApp.controller('SubscribeCtrl', ['$scope', '$log', function($scope, $log) {
   $scope.formData = {};
 
