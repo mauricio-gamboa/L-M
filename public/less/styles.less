@@ -29,6 +29,7 @@ Variables
 @gray-1: #464646;
 @gray-2: #edf4f6;
 @gray-3: #c7d0d4;
+@gray-4: #f3f3f3;
 
 @green-1: #b8da0f;
 @green-2: #c8e04e;
@@ -163,18 +164,26 @@ a, input {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+textarea {
   background-color: white;
   border: 1px solid white;
   border-radius: 5px;
   height: 36px;
   padding: 0 10px;
   width: 100%;
+  resize: none;
 
   &:focus {
     border-color: @orange-1;
     box-shadow: 0 0 5px -1px @orange-1;
   }
+}
+
+textarea {
+  padding: 10px;
+  height: auto;
+  min-height: 100px;
 }
 
 .my-btn {
@@ -864,6 +873,24 @@ Content Styles
         }
       }
     }
+
+    &.dark {
+      background: none;
+      padding: 0;
+
+      > div {
+        background: none;
+        padding: 0;
+
+        fieldset {
+          input[type="text"],
+          input[type="email"],
+          textarea {
+            background-color: @gray-4;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1345,7 +1372,8 @@ Form Styles
 ***************************/
 .form {
   &.ng-submitted {
-    input {
+    input,
+    textarea {
       &.ng-invalid {
         border-color: @red-1;
         box-shadow: 0 0 5px -1px @red-1;
@@ -1369,11 +1397,7 @@ Page Title Styles
   }
   
   .page-title-text {
-    padding-top: 52px;
-
-    @media @xs {
-      padding-top: 35px;
-    }
+    padding-top: 40px;
 
     h2 {
       font-family: 'proxima_nova_semibold';
@@ -1381,6 +1405,16 @@ Page Title Styles
       font-size: 28px;
       color: white;
       margin: 0;
+    }
+  }
+
+  &.pad {
+    .page-title-text {
+      padding-top: 52px;
+
+      @media @xs {
+        padding-top: 40px;
+      }
     }
   }
 }
@@ -1417,5 +1451,29 @@ Sidebar Styles
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+/***************************
+****************************
+Contact Page Styles
+****************************
+***************************/
+
+.contact-section {
+  h4 {
+    background: url("../images/bg-title.png") no-repeat 50% 100%;
+    color: @blue-2;
+    font-family: 'proxima_nova_bold';
+    font-size: 19px;
+    text-transform: capitalize;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+#map {
+  > div {
+    height: 382px;
   }
 }
