@@ -17,6 +17,9 @@ Variables
 @blue-12: #62ccf3;
 @blue-13: #59bade;
 @blue-14: #017ab3;
+@blue-15: #00aeef;
+@blue-16: #4460a0;
+@blue-17: #3c548d;
 
 @orange-1: #f89839;
 
@@ -1290,6 +1293,20 @@ Footer Styles
           margin-right: 10px;
         }
       }
+
+      .social {
+        &.social-fb {
+          span {
+            background-color: @blue-12;
+          }
+
+          &:hover {
+            span {
+              background-color: @blue-13;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -1338,16 +1355,9 @@ Footer Styles
 
   &:hover {
     color: @white-3;
-
-    span {
-      background-color: @blue-13;
-    }
   }
 
   span {
-    background-color: @blue-12;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
     border-radius: 100%;
     width: 36px;
     height: 36px;
@@ -1356,11 +1366,24 @@ Footer Styles
     position: absolute;
     top: 0;
     left: 0;
+    text-align: center;
+    color: white;
+
+    i {
+      font-size: 21px;
+      vertical-align: middle;
+    }
   }
-  
+
   &.social-fb {
     span {
-      background-image: url("../images/ico-5.png");
+      background-color: @blue-16;
+    }
+
+    &:hover {
+      span {
+        background-color: @blue-17;
+      }
     }
   }
 }
@@ -1469,6 +1492,24 @@ Contact Page Styles
     text-transform: capitalize;
     padding-bottom: 15px;
     margin-bottom: 20px;
+  }
+
+  ul {
+    margin: 0;
+
+    li {
+      font-size: 13px;
+      margin-bottom: 15px;
+
+      i {
+        color: @blue-15;
+        font-size: 15px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
