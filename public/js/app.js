@@ -41,7 +41,23 @@ myApp.directive('owlServices', [function () {
   };
 }]);
 
-myApp.controller('SubscribeCtrl', ['$scope', '$log', function($scope, $log) {
+myApp.directive('selectFile', [function () {
+  return {
+    restrict: 'A',
+
+    link: function (scope, element) {
+      var trigger = element.find('.my-btn');
+      var file = element.find('input[type="file"]');
+
+      trigger.on('click', function(e) {
+        e.preventDefault();
+        file.trigger('click');
+      });
+    }
+  };
+}]);
+
+myApp.controller('FormCtrl', ['$scope', '$log', function($scope, $log) {
   $scope.formData = {};
 
   $scope.submit = function (isValid) {
@@ -49,10 +65,36 @@ myApp.controller('SubscribeCtrl', ['$scope', '$log', function($scope, $log) {
   };
 }]);
 
-myApp.controller('ContactCtrl', ['$scope', '$log', function($scope, $log) {
-  $scope.formData = {};
+myApp.directive('gmap', [function () {
+  return {
+    restrict: 'A',
 
-  $scope.submit = function (isValid) {
-    if (isValid) $log.log($scope.formData);
+    link: function (scope, element, attrs, controller) {
+      var lat = attrs.lat * 1;
+      var lng = attrs.lng * 1;
+      var map_canvas = element[0];
+      
+      var latlng = new google.maps.LatLng(lat, lng);
+
+      var map_options = {
+        zoom: 15,
+        center: latlng,
+        scrollwheel: false,
+        scaleControl: false,
+        streetViewControl: false,
+        draggable: true,
+        mapTypeControl: false,
+        zoomControl: false,
+        panControl: false
+      };
+
+      var map = new google.maps.Map(map_canvas, map_options);
+
+      var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        icon: 'public/images/marker.png'
+      });
+    }
   };
 }]);

@@ -17,6 +17,9 @@ Variables
 @blue-12: #62ccf3;
 @blue-13: #59bade;
 @blue-14: #017ab3;
+@blue-15: #00aeef;
+@blue-16: #4460a0;
+@blue-17: #3c548d;
 
 @orange-1: #f89839;
 
@@ -28,6 +31,8 @@ Variables
 
 @gray-1: #464646;
 @gray-2: #edf4f6;
+@gray-3: #c7d0d4;
+@gray-4: #f3f3f3;
 
 @green-1: #b8da0f;
 @green-2: #c8e04e;
@@ -162,18 +167,26 @@ a, input {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+textarea {
   background-color: white;
   border: 1px solid white;
   border-radius: 5px;
   height: 36px;
   padding: 0 10px;
   width: 100%;
+  resize: none;
 
   &:focus {
     border-color: @orange-1;
     box-shadow: 0 0 5px -1px @orange-1;
   }
+}
+
+textarea {
+  padding: 10px;
+  height: auto;
+  min-height: 100px;
 }
 
 .my-btn {
@@ -206,6 +219,30 @@ input[type="email"] {
     &:hover {
       background-color: @green-4;
     }
+  }
+
+  &.btn-2 {
+    background: url("../images/bg-btn-2.png") repeat-x 0 0;
+    border: 1px solid @gray-3;
+    box-shadow: 1px 1px 5px -4px black;
+    color: black;
+    font-size: 13px;
+    font-weight: 700;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    text-transform: capitalize;
+
+    &:hover {
+      background: url("../images/bg-btn-2-hover.png") repeat-x 0 0;
+    }
+  }
+}
+
+.file-wrapper {
+  input[type="file"] {
+    position: absolute;
+    left: -2000px;
   }
 }
 
@@ -592,6 +629,26 @@ Header Styles
       margin-left: -2090px;
     }
   }
+
+  .phone-literal {
+    bottom: 180px;
+    color: white;
+    font-family: 'proxima_nova_semibold';
+    font-size: 40px;
+    left: 15px;
+    line-height: 75px;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 10;
+    display: block;
+
+    @media @small {
+      font-size: 35px;
+      height: 75px;
+      line-height: 33px;
+      padding-top: 5px;
+    }
+  }
 }
 
 /***************************
@@ -799,7 +856,11 @@ Content Styles
         &.checks {
           span {
             display: block;
-            margin-bottom: 10px;
+
+            span {
+              display: inline-block;
+              font-weight: normal;
+            }
           }
 
           label {
@@ -811,6 +872,24 @@ Content Styles
               width: 100%;
               float: none;
             }
+          }
+        }
+      }
+    }
+
+    &.dark {
+      background: none;
+      padding: 0;
+
+      > div {
+        background: none;
+        padding: 0;
+
+        fieldset {
+          input[type="text"],
+          input[type="email"],
+          textarea {
+            background-color: @gray-4;
           }
         }
       }
@@ -1214,6 +1293,20 @@ Footer Styles
           margin-right: 10px;
         }
       }
+
+      .social {
+        &.social-fb {
+          span {
+            background-color: @blue-12;
+          }
+
+          &:hover {
+            span {
+              background-color: @blue-13;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -1262,16 +1355,9 @@ Footer Styles
 
   &:hover {
     color: @white-3;
-
-    span {
-      background-color: @blue-13;
-    }
   }
 
   span {
-    background-color: @blue-12;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
     border-radius: 100%;
     width: 36px;
     height: 36px;
@@ -1280,11 +1366,24 @@ Footer Styles
     position: absolute;
     top: 0;
     left: 0;
+    text-align: center;
+    color: white;
+
+    i {
+      font-size: 21px;
+      vertical-align: middle;
+    }
   }
-  
+
   &.social-fb {
     span {
-      background-image: url("../images/ico-5.png");
+      background-color: @blue-16;
+    }
+
+    &:hover {
+      span {
+        background-color: @blue-17;
+      }
     }
   }
 }
@@ -1296,7 +1395,8 @@ Form Styles
 ***************************/
 .form {
   &.ng-submitted {
-    input {
+    input,
+    textarea {
       &.ng-invalid {
         border-color: @red-1;
         box-shadow: 0 0 5px -1px @red-1;
@@ -1320,11 +1420,7 @@ Page Title Styles
   }
   
   .page-title-text {
-    padding-top: 52px;
-
-    @media @xs {
-      padding-top: 35px;
-    }
+    padding-top: 40px;
 
     h2 {
       font-family: 'proxima_nova_semibold';
@@ -1332,6 +1428,16 @@ Page Title Styles
       font-size: 28px;
       color: white;
       margin: 0;
+    }
+  }
+
+  &.pad {
+    .page-title-text {
+      padding-top: 52px;
+
+      @media @xs {
+        padding-top: 40px;
+      }
     }
   }
 }
@@ -1368,5 +1474,47 @@ Sidebar Styles
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+/***************************
+****************************
+Contact Page Styles
+****************************
+***************************/
+
+.contact-section {
+  h4 {
+    background: url("../images/bg-title.png") no-repeat 50% 100%;
+    color: @blue-2;
+    font-family: 'proxima_nova_bold';
+    font-size: 19px;
+    text-transform: capitalize;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    margin: 0;
+
+    li {
+      font-size: 13px;
+      margin-bottom: 15px;
+
+      i {
+        color: @blue-15;
+        font-size: 15px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#map {
+  > div {
+    height: 382px;
   }
 }
