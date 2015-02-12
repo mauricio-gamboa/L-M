@@ -54,12 +54,12 @@ module.exports = function(grunt) {
     uglify: {
       js: {
         files: {
-          'public/js/libs.min.js': 'public/js/libs.js'
+          'public/js/min/libs.min.js': 'public/js/libs.js'
         }
       },
       scripts: {
         files: {
-          'public/js/app.min.js': 'public/js/app.js'
+          'public/js/min/app.min.js': 'public/js/app.js'
         }
       }
     },
