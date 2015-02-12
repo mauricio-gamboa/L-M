@@ -92,8 +92,7 @@ myApp.directive('gmap', [function () {
 
       var marker = new google.maps.Marker({
         position: latlng,
-        map: map,
-        icon: 'public/images/marker.png'
+        map: map
       });
     }
   };

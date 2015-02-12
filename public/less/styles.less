@@ -1296,8 +1296,14 @@ Footer Styles
 
       .social {
         &.social-fb {
+          position: relative;
+          padding-left: 46px;
+          
           span {
             background-color: @blue-12;
+            position: absolute;
+            left: 0;
+            top: 0;
           }
 
           &:hover {
@@ -1348,8 +1354,6 @@ Footer Styles
   font-family: 'proxima_nova_semibold';
   color: @white-3;
   text-transform: uppercase;
-  position: relative;
-  padding-left: 46px;
   line-height: 36px;
   display: block;
 
@@ -1363,9 +1367,6 @@ Footer Styles
     height: 36px;
     display: block;
     line-height: 36px;
-    position: absolute;
-    top: 0;
-    left: 0;
     text-align: center;
     color: white;
 
@@ -1512,8 +1513,20 @@ Contact Page Styles
     }
   }
 
+  img {
+    width: 100%;
+  }
+
   @media @xs {
     margin-bottom: 20px;
+  }
+
+  & + & {
+    margin-top: 40px;
+
+    @media @xs {
+      margin-top: 0;
+    }
   }
 }
 
